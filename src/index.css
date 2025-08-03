@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Old Money Fashion Design System - Stockholm Style
+All colors MUST be HSL. Sophisticated neutrals with warm accents.
+*/
+
+@layer base {
+  :root {
+    /* Old Money Light Theme */
+    --background: 45 15% 98%;
+    --foreground: 25 10% 15%;
+
+    --card: 45 15% 96%;
+    --card-foreground: 25 10% 15%;
+
+    --popover: 45 15% 98%;
+    --popover-foreground: 25 10% 15%;
+
+    --primary: 25 15% 25%;
+    --primary-foreground: 45 15% 98%;
+
+    --secondary: 40 20% 92%;
+    --secondary-foreground: 25 15% 25%;
+
+    --muted: 40 20% 94%;
+    --muted-foreground: 25 8% 45%;
+
+    --accent: 35 25% 90%;
+    --accent-foreground: 25 15% 25%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 45 15% 98%;
+
+    --border: 35 15% 88%;
+    --input: 35 15% 88%;
+    --ring: 25 15% 25%;
+
+    --radius: 0.5rem;
+
+    /* Old Money Palette */
+    --cream: 45 25% 95%;
+    --warm-white: 40 20% 98%;
+    --soft-beige: 35 20% 85%;
+    --warm-gray: 25 8% 65%;
+    --charcoal: 25 10% 25%;
+    --deep-navy: 220 25% 20%;
+    --camel: 35 35% 70%;
+    --sage: 120 15% 75%;
+    --blush: 15 25% 85%;
+
+    /* Gradients */
+    --gradient-cream: linear-gradient(135deg, hsl(var(--cream)), hsl(var(--warm-white)));
+    --gradient-warm: linear-gradient(135deg, hsl(var(--soft-beige)), hsl(var(--cream)));
+    --gradient-sophisticated: linear-gradient(135deg, hsl(var(--charcoal)), hsl(var(--deep-navy)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--warm-white)), hsl(var(--cream)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsla(var(--charcoal), 0.08);
+    --shadow-elegant: 0 8px 30px hsla(var(--charcoal), 0.12);
+    --shadow-luxury: 0 15px 40px hsla(var(--charcoal), 0.15);
+
+    /* Typography */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Animation */
+    --transition-elegant: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s ease-out;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Old Money Dark Theme */
+    --background: 25 10% 8%;
+    --foreground: 45 15% 95%;
+
+    --card: 25 10% 12%;
+    --card-foreground: 45 15% 95%;
+
+    --popover: 25 10% 8%;
+    --popover-foreground: 45 15% 95%;
+
+    --primary: 45 15% 95%;
+    --primary-foreground: 25 10% 8%;
+
+    --secondary: 25 8% 20%;
+    --secondary-foreground: 45 15% 95%;
+
+    --muted: 25 8% 18%;
+    --muted-foreground: 35 8% 65%;
+
+    --accent: 25 8% 20%;
+    --accent-foreground: 45 15% 95%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 45 15% 95%;
+
+    --border: 25 8% 25%;
+    --input: 25 8% 25%;
+    --ring: 45 15% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: var(--font-body);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Fashion Button Variants */
+  .btn-luxury {
+    @apply relative inline-flex items-center justify-center px-8 py-4 text-sm font-medium 
+           rounded-md transition-all duration-300 overflow-hidden;
+    background: var(--gradient-sophisticated);
+    color: hsl(var(--warm-white));
+    box-shadow: var(--shadow-elegant);
+    font-family: var(--font-body);
+  }
+
+  .btn-luxury:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-luxury);
+  }
+
+  .btn-luxury::before {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    content: '';
+    background: var(--gradient-warm);
+  }
+
+  .btn-luxury:hover::before {
+    @apply opacity-20;
+  }
+
+  .btn-luxury > * {
+    @apply relative z-10;
+  }
+
+  .btn-elegant {
+    @apply relative inline-flex items-center justify-center px-6 py-3 text-sm font-medium 
+           rounded-md border transition-all duration-300 overflow-hidden;
+    color: hsl(var(--charcoal));
+    border-color: hsl(var(--charcoal));
+    font-family: var(--font-body);
+  }
+
+  .btn-elegant:hover {
+    @apply text-background;
+    background: hsl(var(--charcoal));
+    transform: translateY(-1px);
+  }
+
+  /* Text Effects */
+  .text-luxury {
+    background: var(--gradient-sophisticated);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-display);
+  }
+
+  .text-warm {
+    background: var(--gradient-warm);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Fashion Cards */
+  .card-fashion {
+    @apply bg-card rounded-lg border border-border/30 backdrop-blur-sm;
+    background: hsl(var(--warm-white));
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-elegant);
+  }
+
+  .card-fashion:hover {
+    @apply border-border;
+    box-shadow: var(--shadow-elegant);
+    transform: translateY(-2px);
+  }
+
+  /* Product Card */
+  .product-card {
+    @apply bg-card rounded-lg overflow-hidden;
+    background: hsl(var(--warm-white));
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-elegant);
+  }
+
+  .product-card:hover {
+    box-shadow: var(--shadow-elegant);
+    transform: translateY(-4px);
+  }
+
+  /* Typography Classes */
+  .headline-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  .body-elegant {
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
+
+  /* Glow Effects */
+  .glow-blue {
+    filter: drop-shadow(0 0 20px hsla(var(--electric-blue), 0.5));
+  }
+
+  .glow-green {
+    filter: drop-shadow(0 0 20px hsla(var(--tech-green), 0.5));
+  }
+
+  /* Premium Scrollbar */
+  .premium-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .premium-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  .premium-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--foreground));
+    border-radius: 3px;
+  }
+
+  .premium-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--electric-blue));
+  }
+}
